@@ -16,13 +16,7 @@ jobs:
       EKS_CLUSTER: EKS-CREASYS-TRANSFERENCIAS-CLUSTER-01
       K8S_MANIFESTS: ./k8s
       DOCKER_BUILDKIT: 1
-      AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.KEY_ID }}
     steps:
-      - name: Test the secrets aws
-        run: |
-          echo $AWS_ACCESS_KEY_ID.length
-          echo $AWS_SECRET_ACCESS_KEY.length
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -32,8 +26,8 @@ jobs:
           python-version: "3.x"
       - uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: $AWS_ACCESS_KEY_ID
-          aws-secret-access-key: $AWS_SECRET_ACCESS_KEY
+          aws-access-key-id: ${{ secrets.ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.KEY_ID }}
           aws-region: us-east-1
       - name: Login to Amazon ECR Public
         id: login-ecr-public
