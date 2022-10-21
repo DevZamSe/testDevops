@@ -11,7 +11,7 @@ jobs:
     timeout-minutes: 25
     env:
       AWS_REPO_URL: public.ecr.aws/k7l1b1b0
-      AWS_REPO_NAME: ecr-test
+      AWS_REPO_NAME: ecr-br-test
       TAG: 0.9.9
       EKS_CLUSTER: EKS-CREASYS-TRANSFERENCIAS-CLUSTER-01
       K8S_MANIFESTS: ./k8s
@@ -26,8 +26,8 @@ jobs:
           python-version: "3.x"
       - uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Login to Amazon ECR Public
         id: login-ecr-public
