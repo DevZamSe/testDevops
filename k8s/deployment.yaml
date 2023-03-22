@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: hello-world
-          image: "public.ecr.aws/k7l1b1b0/ecr-br-test:0.9.9"
+          image: "public.ecr.aws/k7l1b1b0/ecr-br-test:0.9.10"
           ports:
             - containerPort: 3000
           imagePullPolicy: Always
